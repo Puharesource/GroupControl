@@ -14,7 +14,7 @@ public class ListenerChat implements Listener {
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onChatLP(AsyncPlayerChatEvent event) {
         Rank rank = getMostDominantRank(event.getPlayer());
-        if(rank != null) {
+        if (rank != null) {
             event.setFormat(rank.getDisplayNameColor() + event.getPlayer().getDisplayName());
         }
     }
@@ -22,7 +22,7 @@ public class ListenerChat implements Listener {
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onChat(AsyncPlayerChatEvent event) {
         Rank rank = getMostDominantRank(event.getPlayer());
-        if(rank != null) {
+        if (rank != null) {
             event.setMessage(rank.getChatColor() + event.getMessage());
         }
     }
@@ -33,10 +33,10 @@ public class ListenerChat implements Listener {
     }
 
     private String formatChat(Player player, String format) {
-        for(String type : Main.rankTypes.keySet()) {
+        for (String type : Main.rankTypes.keySet()) {
             Rank rank = getRankByType(player, type);
 
-            if(rank != null)
+            if (rank != null)
                 format = format.replaceAll("(?i)\\{" + type.toUpperCase() + "\\}", ChatColor.translateAlternateColorCodes('&', Main.rankLayouts.get(type.toUpperCase()).replace("{TAG}", rank.getTag())));
             else format = format.replaceAll("(?i)\\{" + type.toUpperCase() + "\\}", "");
         }
@@ -45,9 +45,9 @@ public class ListenerChat implements Listener {
 
     private Rank getMostDominantRank(Player player) {
         Rank rank = null;
-        for(String type : Main.rankTypes.keySet()) {
+        for (String type : Main.rankTypes.keySet()) {
             rank = getRankByType(player, type);
-            if(rank != null)
+            if (rank != null)
                 break;
         }
         return rank;

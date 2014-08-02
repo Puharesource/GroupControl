@@ -39,8 +39,8 @@ public class Main extends JavaPlugin {
     }
 
     public void loadConfig() {
-        if (!getDataFolder().exists()) getDataFolder().mkdir();
-
+        if (!getDataFolder().exists())
+            getDataFolder().mkdir();
         File config = new File(getDataFolder(), "config.yml");
 
         try {
@@ -57,17 +57,17 @@ public class Main extends JavaPlugin {
         ConfigurationSection layoutSection = getConfig().getConfigurationSection("layouts");
         ConfigurationSection rankTypesSection = getConfig().getConfigurationSection("ranks");
 
-        for(String layout : layoutSection.getKeys(false))
+        for (String layout : layoutSection.getKeys(false))
             rankLayouts.put(layout.toUpperCase(), layoutSection.getString(layout));
 
-        for(String rankType : rankTypesSection.getKeys(false)) {
+        for (String rankType : rankTypesSection.getKeys(false)) {
             rankType = rankType.toUpperCase();
             ConfigurationSection typeSection = rankTypesSection.getConfigurationSection(rankType);
             List<String> list = new ArrayList<>();
             list.addAll(typeSection.getKeys(false));
             rankTypes.put(rankType, list);
 
-            for(String rank : typeSection.getKeys(false)) {
+            for (String rank : typeSection.getKeys(false)) {
                 ConfigurationSection rankSection = typeSection.getConfigurationSection(rank);
                 ranks.put(rank, new Rank(rank, rankSection.getString("chatcolor"), rankSection.getString("displayNameColor"), rankSection.getString("tag"), rankType, rankSection.getInt("priority")));
             }
