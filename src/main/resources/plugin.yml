@@ -1,0 +1,8 @@
+name: GroupControl
+version: 1.0.0
+author: Puharesource
+
+depend: [Vault]
+softdepend: [PermissionsEx, zPermissions, GroupManager]
+
+main: io.puharesource.mc.groupcontrol.Main

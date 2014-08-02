@@ -1,0 +1,171 @@
+layouts:
+  DONOR: '{TAG} &3•&3'
+  RANKS: '{TAG} &3•'
+ranks:
+  DONOR:
+    God:
+      tag: '&c&lGod'
+      chatcolor: '&3'
+      displayNameColor: '&f'
+      priority: 5
+    Legend:
+      tag: '&2&lLegend'
+      chatcolor: '&3'
+      displayNameColor: '&f'
+      priority: 4
+    Officer:
+      tag: '&b&lOfficer'
+      chatcolor: '&3'
+      displayNameColor: '&f'
+      priority: 3
+    Killer:
+      tag: '&bKiller'
+      chatcolor: '&3'
+      displayNameColor: '&f'
+      priority: 2
+    Prisoner:
+      tag: '&cPrisoner'
+      chatcolor: '&3'
+      displayNameColor: '&f'
+      priority: 1
+    Donor:
+      tag: '&dDonor'
+      chatcolor: '&7'
+      displayNameColor: '&f'
+      priority: 0
+  RANKS:
+    A:
+      tag: '&bA'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    B:
+      tag: '&eB'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    C:
+      tag: '&cC'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    D:
+      tag: '&dD'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    E:
+      tag: '&3E'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    F:
+      tag: '&6F'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    G:
+      tag: '&bG'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    H:
+      tag: '&eH'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    I:
+      tag: '&3I'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    J:
+      tag: '&cJ'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    K:
+      tag: '&aK'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    L:
+      tag: '&2L'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    M:
+      tag: '&b&lM'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    N:
+      tag: '&e&lN'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    O:
+      tag: '&bA'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    P:
+      tag: '&&a&lP'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    Q:
+      tag: '&b&lQ'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    R:
+      tag: '&3&lR'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    S:
+      tag: '&2&lS'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    T:
+      tag: '&d&lT'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    U:
+      tag: '&e&lU'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    V:
+      tag: '&e&lU'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    W:
+      tag: '&c&lW'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    X:
+      tag: '&3&lX'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    Y:
+      tag: '&e&lZ'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    Z:
+      tag: '&bA'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
+    Free:
+      tag: '&bA'
+      chatcolor: '&f'
+      displayNameColor: '&f'
+      priority: 0
