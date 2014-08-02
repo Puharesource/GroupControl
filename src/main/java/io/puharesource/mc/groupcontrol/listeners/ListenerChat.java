@@ -15,7 +15,7 @@ public class ListenerChat implements Listener {
     public void onChatLP(AsyncPlayerChatEvent event) {
         Rank rank = getMostDominantRank(event.getPlayer());
         if (rank != null) {
-            event.setFormat(rank.getDisplayNameColor() + event.getPlayer().getDisplayName());
+            event.setFormat(event.getFormat().replaceAll("(?i)\\{DISPLAYNAME\\}", rank.getDisplayNameColor() + event.getPlayer().getDisplayName()));
         }
     }
 
