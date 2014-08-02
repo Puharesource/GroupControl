@@ -12,27 +12,26 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 public class ListenerChat implements Listener {
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
-    public void onChatLP(AsyncPlayerChatEvent event) {
-        Rank rank = getMostDominantRank(event.getPlayer());
-        if (rank != null) {
-            event.setFormat(event.getFormat().replaceAll("(?i)\\{DISPLAYNAME\\}", rank.getDisplayNameColor() + event.getPlayer().getDisplayName()));
-        }
-    }
-
-    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onChat(AsyncPlayerChatEvent event) {
         Rank rank = getMostDominantRank(event.getPlayer());
-        if (rank != null) {
+
+        if (rank != null)
             event.setMessage(rank.getChatColor() + event.getMessage());
-        }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onChatHP(AsyncPlayerChatEvent event) {
-        event.setFormat(formatChat(event.getPlayer(), event.getFormat()));
+        Player player = event.getPlayer();
+        getMostDominantRank(player);
+
+        event.setFormat(formatChat(player, event.getFormat()));
     }
 
     private String formatChat(Player player, String format) {
+        Rank dominantRank = getMostDominantRank(player);
+        if(dominantRank != null)
+            format = format.replaceAll("(?i)\\{GCDISPLAYNAME\\}", dominantRank.getDisplayNameColor());
+
         for (String type : Main.rankTypes.keySet()) {
             Rank rank = getRankByType(player, type);
 
