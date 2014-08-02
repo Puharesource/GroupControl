@@ -30,7 +30,7 @@ public class ListenerChat implements Listener {
     private String formatChat(Player player, String format) {
         Rank dominantRank = getMostDominantRank(player);
         if(dominantRank != null)
-            format = format.replaceAll("(?i)\\{GCDISPLAYNAME\\}", player.getDisplayName() + dominantRank.getDisplayNameColor());
+            format = format.replaceAll("(?i)\\{GCDISPLAYNAME\\}", dominantRank.getDisplayNameColor() + player.getDisplayName());
         else format = format.replaceAll("(?i)\\{GCDISPLAYNAME\\}", player.getDisplayName());
 
         for (String type : Main.rankTypes.keySet()) {
