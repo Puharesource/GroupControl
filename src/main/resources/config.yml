@@ -1,8 +1,9 @@
 layouts:
-  DONOR: '{TAG} &3•&3'
-  RANKS: '{TAG} &3•'
+  DONOR: ' [{TAG}]'
+  RANKS: '[{TAG}] '
 ranks:
   DONOR:
+    priority: 1
     God:
       tag: '&c&lGod'
       chatcolor: '&3'
@@ -34,6 +35,7 @@ ranks:
       displayNameColor: '&f'
       priority: 0
   RANKS:
+    priority: 0
     A:
       tag: '&bA'
       chatcolor: '&f'

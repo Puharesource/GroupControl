@@ -1,5 +1,6 @@
 package io.puharesource.mc.groupcontrol;
 
+import io.puharesource.mc.groupcontrol.commands.CommandGroupControl;
 import io.puharesource.mc.groupcontrol.listeners.ListenerChat;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.configuration.ConfigurationSection;
@@ -17,10 +18,13 @@ import java.util.logging.Level;
 
 public class Main extends JavaPlugin {
 
+    public static Main plugin;
+
     public static Permission permission = null;
 
     public static Map<String, List<String>> rankTypes = new HashMap<>();
     public static Map<String, Rank> ranks = new HashMap<>();
+    public static Map<String, Integer> rankTypePriorities = new HashMap<>();
     public static Map<String, String> rankLayouts = new HashMap<>();
 
     public static Rank getRank(String rank) {
@@ -28,6 +32,7 @@ public class Main extends JavaPlugin {
     }
 
     public void onEnable() {
+        plugin = this;
         if (!setupPermissions()) {
             getLogger().log(Level.SEVERE, "Couldn't setup permissions! Disabling plugin.");
             getPluginLoader().disablePlugin(this);
@@ -36,6 +41,8 @@ public class Main extends JavaPlugin {
         loadSettings();
 
         getServer().getPluginManager().registerEvents(new ListenerChat(), this);
+
+        getCommand("groupcontrol").setExecutor(new CommandGroupControl());
     }
 
     public void loadConfig() {
@@ -67,7 +74,10 @@ public class Main extends JavaPlugin {
             list.addAll(typeSection.getKeys(false));
             rankTypes.put(rankType, list);
 
+            rankTypePriorities.put(rankType, typeSection.getInt("priority"));
+
             for (String rank : typeSection.getKeys(false)) {
+                if(rank.equalsIgnoreCase("priority")) continue;
                 ConfigurationSection rankSection = typeSection.getConfigurationSection(rank);
                 ranks.put(rank, new Rank(rank, rankSection.getString("chatcolor"), rankSection.getString("displayNameColor"), rankSection.getString("tag"), rankType, rankSection.getInt("priority")));
             }

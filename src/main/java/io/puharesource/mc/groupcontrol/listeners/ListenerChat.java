@@ -19,7 +19,7 @@ public class ListenerChat implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onChat(AsyncPlayerChatEvent event) {
         Rank rank = getMostDominantRank(event.getPlayer());
         if (rank != null) {
@@ -45,10 +45,20 @@ public class ListenerChat implements Listener {
 
     private Rank getMostDominantRank(Player player) {
         Rank rank = null;
+        Integer priority = null;
         for (String type : Main.rankTypes.keySet()) {
-            rank = getRankByType(player, type);
-            if (rank != null)
-                break;
+            Rank rank1 = getRankByType(player, type);
+            if(rank == null)
+                rank = rank1;
+            else if(priority == null)
+                priority = Main.rankTypePriorities.get(type);
+            else{
+                int priority1 = Main.rankTypePriorities.get(type);
+                if(priority < priority1) {
+                    priority = priority1;
+                    rank = rank1;
+                }
+            }
         }
         return rank;
     }
@@ -57,22 +67,24 @@ public class ListenerChat implements Listener {
         Rank highestPriorityRank = null;
         Integer priority = null;
         String[] groups = Main.permission.getPlayerGroups(player);
-        if (groups != null)
-            if (groups.length > 0)
-                for (String group : Main.permission.getPlayerGroups(player)) {
-                    Rank rank = Main.getRank(group);
+        if (groups == null) return null;
+        if (groups.length <= 0) return null;
 
-                    if (rank != null) {
-                        if (!rank.getType().equalsIgnoreCase(type)) continue;
-                        if (highestPriorityRank == null) {
-                            highestPriorityRank = rank;
-                            priority = rank.getPriority();
-                        } else if (priority < rank.getPriority()) {
-                            highestPriorityRank = rank;
-                            priority = rank.getPriority();
-                        }
-                    }
-                }
+        for (String group : groups) {
+            Rank rank = Main.getRank(group);
+
+            if (rank == null) continue;
+            if (!rank.getType().equalsIgnoreCase(type)) continue;
+
+            if (highestPriorityRank == null) {
+                highestPriorityRank = rank;
+                priority = rank.getPriority();
+            } else {
+                if(priority > rank.getPriority()) continue;
+                highestPriorityRank = rank;
+                priority = rank.getPriority();
+            }
+        }
         return highestPriorityRank;
     }
 }
