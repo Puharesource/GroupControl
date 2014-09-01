@@ -16,7 +16,7 @@ public class ListenerChat implements Listener {
         Rank rank = getMostDominantRank(event.getPlayer());
 
         if (rank != null)
-            event.setMessage(rank.getChatColor() + event.getMessage());
+            event.setMessage(rank.getChatColor() + ChatColor.stripColor(event.getMessage()));
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
